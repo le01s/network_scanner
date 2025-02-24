@@ -9,11 +9,12 @@ import sys
 
 def get_ttl(host):
     try:
-        proc = subprocess.Popen(["ping", "-c", "1", "-W", "1", host], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
-        output = proc.communicate()[0].decode()
+        # Для Windows используем другую команду ping
+        proc = subprocess.run(["ping", "-n", "1", "-w", "1000", host], capture_output=True, text=True)
+        output = proc.stdout
         for line in output.split("\n"):
-            if "ttl=" in line:
-                ttl = int(line.split("ttl=")[1].split()[0])
+            if "TTL=" in line:  # Для Windows TTL в верхнем регистре
+                ttl = int(line.split("TTL=")[1].split()[0])
                 return ttl
     except Exception:
         return None
