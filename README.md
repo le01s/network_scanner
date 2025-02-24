@@ -20,8 +20,8 @@ This is a network diagnostic tool that helps users scan their local network for 
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-repository/network-diagnostic-scanner.git
-   cd network-diagnostic-scanner
+   git clone git@github.com:le01s/network_scanner.git
+   cd network_scanner
    ```
 
 2. Install dependencies:
